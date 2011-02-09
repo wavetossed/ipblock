@@ -1,0 +1,38 @@
+Help on module ipv6:
+
+NAME
+    ipv6 - # ipv6 - module to support IPv6 addresses, ranges, and lists.
+
+FILE
+    /cygdrive/d/ipv4/ipblock/ipv6.py
+
+CLASSES
+    __builtin__.object
+        IPv6Addr
+    
+    class IPv6Addr(__builtin__.object)
+     |  128 bit IPv6 addresses
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, a)
+     |      initialize from either a bit array or colon hex notation
+     |  
+     |  tohex(self)
+     |  
+     |  tonorm(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+FUNCTIONS
+    v6_inet_aton(a)
+        converts RFC 4291 string format to internal binary octets
+
+

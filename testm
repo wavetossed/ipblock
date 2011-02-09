@@ -1,0 +1,13 @@
+function! WW()
+python << EEOOFF
+import vim
+import os.path
+import os
+fpath = vim.current.buffer.name
+atime = os.path.getatime(fpath)
+mtime = os.path.getmtime(fpath)
+vim.command("w")
+os.utime(fpath, (atime, mtime))
+EEOOFF
+endfunction
+

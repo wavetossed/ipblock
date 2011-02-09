@@ -1,0 +1,363 @@
+Help on module ipv4:
+
+NAME
+    ipv4 - # ipv4 - module to support IPv4 addresses, ranges, and lists.
+
+FILE
+    /cygdrive/d/ipv4/ipblock/ipv4.py
+
+CLASSES
+    __builtin__.list(__builtin__.object)
+        IPv4RangeList
+    __builtin__.object
+        IPv4Addr
+        IPv4Mask
+            IPv4NetMask
+        IPv4Range
+            IPv4CIDR
+    
+    class IPv4Addr(__builtin__.object)
+     |  32-bit IPv4 addresses
+     |  
+     |  Methods defined here:
+     |  
+     |  __add__(self, n)
+     |  
+     |  __and__(self, m)
+     |  
+     |  __cmp__(self, other)
+     |      make comparisons work
+     |  
+     |  __init__(self, a)
+     |      initialize from either a long int or a dotted quad string
+     |  
+     |  __lshift__(self, n)
+     |  
+     |  __or__(self, m)
+     |  
+     |  __rshift__(self, n)
+     |  
+     |  __str__(self)
+     |      show it as dotted quad
+     |  
+     |  __xor__(self, m)
+     |  
+     |  long2quad(self)
+     |      convert long int to dotted quad string
+     |  
+     |  lrot(self, n)
+     |  
+     |  octets(self)
+     |      return an array of integer octets
+     |  
+     |  rrot(self, n)
+     |  
+     |  tobin(self)
+     |  
+     |  tohex(self)
+     |  
+     |  tolong(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Static methods defined here:
+     |  
+     |  bstr(n)
+     |  
+     |  quad2long(ip)
+     |      convert decimal dotted quad string to long integer
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  bits
+    
+    class IPv4CIDR(IPv4Range)
+     |  Method resolution order:
+     |      IPv4CIDR
+     |      IPv4Range
+     |      __builtin__.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, s, m)
+     |  
+     |  usable(self)
+     |      return the number of usable IPs in CIDR, i.e. not incl. all 0s, all 1s
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  end
+     |  
+     |  mask
+     |  
+     |  start
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from IPv4Range:
+     |  
+     |  __cmp__(self, other)
+     |  
+     |  __contains__(self, r)
+     |      does self contain the argument range or address
+     |  
+     |  __iter__(self)
+     |  
+     |  __len__(self)
+     |  
+     |  __str__(self)
+     |  
+     |  addrs(self)
+     |      returns a list of all addrs in the range
+     |  
+     |  adjacent(self, r)
+     |      are the two ranges adjacent
+     |  
+     |  difference(self, other)
+     |      subtract another range returning a list of ranges
+     |  
+     |  join(self, other)
+     |      combine two continuous ranges
+     |  
+     |  lessthan(self, other)
+     |  
+     |  overlaps(self, r)
+     |      does self overlap the argument range
+     |  
+     |  subtract(self, r)
+     |      returns a list of all ranges in self not overlapping r
+    
+    class IPv4Mask(__builtin__.object)
+     |  Methods defined here:
+     |  
+     |  __init__(self, m)
+     |  
+     |  __str__(self)
+     |  
+     |  inversemask(self)
+     |      inverse mask as used for matching in ACLs and firewall rules
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  bits
+    
+    class IPv4NetMask(IPv4Mask)
+     |  Method resolution order:
+     |      IPv4NetMask
+     |      IPv4Mask
+     |      __builtin__.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, b)
+     |      a mask of n bits as a long integer
+     |  
+     |  __len__(self)
+     |  
+     |  __str__(self)
+     |  
+     |  hexmask(self)
+     |  
+     |  nbits(self)
+     |  
+     |  netmask(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  bits
+     |  
+     |  numbits
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from IPv4Mask:
+     |  
+     |  inversemask(self)
+     |      inverse mask as used for matching in ACLs and firewall rules
+    
+    class IPv4Range(__builtin__.object)
+     |  Methods defined here:
+     |  
+     |  __cmp__(self, other)
+     |  
+     |  __contains__(self, r)
+     |      does self contain the argument range or address
+     |  
+     |  __init__(self, s, e)
+     |  
+     |  __iter__(self)
+     |  
+     |  __len__(self)
+     |  
+     |  __str__(self)
+     |  
+     |  addrs(self)
+     |      returns a list of all addrs in the range
+     |  
+     |  adjacent(self, r)
+     |      are the two ranges adjacent
+     |  
+     |  difference(self, other)
+     |      subtract another range returning a list of ranges
+     |  
+     |  join(self, other)
+     |      combine two continuous ranges
+     |  
+     |  lessthan(self, other)
+     |  
+     |  overlaps(self, r)
+     |      does self overlap the argument range
+     |  
+     |  subtract(self, r)
+     |      returns a list of all ranges in self not overlapping r
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  end
+     |  
+     |  start
+    
+    class IPv4RangeList(__builtin__.list)
+     |  Method resolution order:
+     |      IPv4RangeList
+     |      __builtin__.list
+     |      __builtin__.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __contains__(self, other)
+     |  
+     |  __init__(self, items=[])
+     |  
+     |  __str__(self)
+     |  
+     |  append(self, r)
+     |  
+     |  extend(self, x)
+     |  
+     |  normalize(self)
+     |      we need to join any adjacent or overlapping ranges
+     |  
+     |  sort(self, cmpfunc=None)
+     |  
+     |  span(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from __builtin__.list:
+     |  
+     |  __add__(...)
+     |      x.__add__(y) <==> x+y
+     |  
+     |  __delitem__(...)
+     |      x.__delitem__(y) <==> del x[y]
+     |  
+     |  __delslice__(...)
+     |      x.__delslice__(i, j) <==> del x[i:j]
+     |      
+     |      Use of negative indices is not supported.
+     |  
+     |  __eq__(...)
+     |      x.__eq__(y) <==> x==y
+     |  
+     |  __ge__(...)
+     |      x.__ge__(y) <==> x>=y
+     |  
+     |  __getattribute__(...)
+     |      x.__getattribute__('name') <==> x.name
+     |  
+     |  __getitem__(...)
+     |      x.__getitem__(y) <==> x[y]
+     |  
+     |  __getslice__(...)
+     |      x.__getslice__(i, j) <==> x[i:j]
+     |      
+     |      Use of negative indices is not supported.
+     |  
+     |  __gt__(...)
+     |      x.__gt__(y) <==> x>y
+     |  
+     |  __iadd__(...)
+     |      x.__iadd__(y) <==> x+=y
+     |  
+     |  __imul__(...)
+     |      x.__imul__(y) <==> x*=y
+     |  
+     |  __iter__(...)
+     |      x.__iter__() <==> iter(x)
+     |  
+     |  __le__(...)
+     |      x.__le__(y) <==> x<=y
+     |  
+     |  __len__(...)
+     |      x.__len__() <==> len(x)
+     |  
+     |  __lt__(...)
+     |      x.__lt__(y) <==> x<y
+     |  
+     |  __mul__(...)
+     |      x.__mul__(n) <==> x*n
+     |  
+     |  __ne__(...)
+     |      x.__ne__(y) <==> x!=y
+     |  
+     |  __repr__(...)
+     |      x.__repr__() <==> repr(x)
+     |  
+     |  __reversed__(...)
+     |      L.__reversed__() -- return a reverse iterator over the list
+     |  
+     |  __rmul__(...)
+     |      x.__rmul__(n) <==> n*x
+     |  
+     |  __setitem__(...)
+     |      x.__setitem__(i, y) <==> x[i]=y
+     |  
+     |  __setslice__(...)
+     |      x.__setslice__(i, j, y) <==> x[i:j]=y
+     |      
+     |      Use  of negative indices is not supported.
+     |  
+     |  __sizeof__(...)
+     |      L.__sizeof__() -- size of L in memory, in bytes
+     |  
+     |  count(...)
+     |      L.count(value) -> integer -- return number of occurrences of value
+     |  
+     |  index(...)
+     |      L.index(value, [start, [stop]]) -> integer -- return first index of value.
+     |      Raises ValueError if the value is not present.
+     |  
+     |  insert(...)
+     |      L.insert(index, object) -- insert object before index
+     |  
+     |  pop(...)
+     |      L.pop([index]) -> item -- remove and return item at index (default last).
+     |      Raises IndexError if list is empty or index is out of range.
+     |  
+     |  remove(...)
+     |      L.remove(value) -- remove first occurrence of value.
+     |      Raises ValueError if the value is not present.
+     |  
+     |  reverse(...)
+     |      L.reverse() -- reverse *IN PLACE*
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes inherited from __builtin__.list:
+     |  
+     |  __hash__ = None
+     |  
+     |  __new__ = <built-in method __new__ of type object>
+     |      T.__new__(S, ...) -> a new object with type S, a subtype of T
+
+
